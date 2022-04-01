@@ -13,6 +13,8 @@ Token Model should contain these fields
 - media_url - URL for an image
 - owner - Owner's Address in ETH Network
 
+I have chosen pony orm and created a sqlite database. I also added two functions that would be called in /tokens/create handler later
+
 ### Create views
 
 The next API is needed to be designed

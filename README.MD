@@ -17,7 +17,7 @@ I have chosen pony orm and created a sqlite database. I also added two functions
 
 ### Create views
 
-The next API is needed to be designed
+The next views are needed to be designed
 
 ### /tokens/create
 
@@ -40,6 +40,28 @@ The responce looks like this:
 }
 
 ### /tokens/list
+
+This view responces with Token model list from db. 
+
+The responce looks like:
+
+[
+    {
+        "id": 1,
+        "unique_hash": "xxxxx11111XXXXX22222",
+        "tx_hash": "0x...",
+        "media_url": "url_from_request_body.jpg",
+        "owner": "owners_eth_address"
+    },
+    {
+        "id": 2,
+        "unique_hash": "xxxxx11111XXXXX22222",
+        "tx_hash": "0x...",
+        "media_url": "url_from_request_body.jpg",
+        "owner": "owners_eth_address"
+    }
+    ...
+]
 
 ### /tokens/total_supply
 

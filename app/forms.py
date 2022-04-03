@@ -1,3 +1,4 @@
+from asyncio.windows_events import NULL
 from models import *
 from pydantic import BaseModel, validator
 
@@ -10,7 +11,7 @@ class TokenForm(BaseModel):
 class TokenInDB(BaseModel):
     id: int
     unique_hash: str
-    tx_hash: str
+    tx_hash: str = None
     media_url: str
     owner: str
 

@@ -1,9 +1,10 @@
 from distutils.log import error
 import os
+from tokenize import Token
 from fastapi import APIRouter, Body
 from web3 import Web3
 from forms import TokenForm, TokenInDB
-from models import add_token, add_tx_hash_to_token, get_token_from_unique_hash
+from models import *
 import secrets
 import string
 
@@ -67,7 +68,15 @@ def create(token_form: TokenForm = Body(..., embed=True)):
     return result
 
 
-@router.get("/total_supply")
+@router.get("/list", name="list db items")
+def list():
+    with db_session:
+        tokens = Token.select()
+        result = [TokenInDB.from_orm(t) for t in tokens]
+    return result
+
+
+@router.get("/total_supply", name="get contract's total supply info")
 def total_supply():
     try:
         web3 = get_web3()

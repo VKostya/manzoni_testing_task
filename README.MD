@@ -19,7 +19,25 @@ I have chosen pony orm and created a sqlite database. I also added two functions
 
 The next API is needed to be designed
 
-### /tokens/create  
+### /tokens/create
+
+This view has next logic:
+
+- get data from request body
+- create unique_hash string using secrets.choise function
+- initialize contract instance using web3 library (it is also used in /tokens/total_supply)
+- sign the transaction and send it to Rinkeby Testnet Network
+- save data
+
+The responce looks like this:
+
+{
+  "id": 1,
+  "unique_hash": "xxxxx11111XXXXX22222",
+  "tx_hash": "0x...",
+  "media_url": "url_from_request_body.jpg",
+  "owner": "owners_eth_address"
+}
 
 ### /tokens/list
 

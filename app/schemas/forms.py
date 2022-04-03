@@ -1,5 +1,5 @@
 from asyncio.windows_events import NULL
-from models import *
+from db.models import *
 from pydantic import BaseModel, validator
 
 

@@ -1,5 +1,4 @@
 .env
 env/
 __pycache__/
-test_web3.py
 .vscode/

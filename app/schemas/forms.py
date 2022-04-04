@@ -1,6 +1,5 @@
-from asyncio.windows_events import NULL
 from db.models import *
-from pydantic import BaseModel, validator
+from pydantic import BaseModel
 
 
 class TokenForm(BaseModel):

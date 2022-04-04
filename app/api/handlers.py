@@ -5,7 +5,7 @@ from api.scripts import *
 from db.db_scripts import *
 from schemas.forms import TokenForm, TokenInDB
 from db.models import *
-
+from config import Settings as ST
 
 router = APIRouter()
 
@@ -23,7 +23,7 @@ def create(token_form: TokenForm = Body(..., embed=True)):
     except ValueError as e:
         return {"error": e["message"]}
     signed_txn = web3.eth.account.sign_transaction(
-        contract_txn, private_key=os.getenv("PRIVATE_KEY")
+        contract_txn, private_key=ST.PRIVATE_KEY
     )
     web3.eth.send_raw_transaction(signed_txn.rawTransaction)
     tx_hash = web3.toHex(web3.keccak(signed_txn.rawTransaction))
@@ -45,9 +45,7 @@ def list():
 def total_supply():
     try:
         web3 = get_web3()
-        contract = web3.eth.contract(
-            address=os.getenv("CONTRACT_ADDRESS"), abi=os.getenv("ABI")
-        )
+        contract = web3.eth.contract(address=ST.CONTRACT_ADDRESS, abi=ST.ABI)
         response_json = {
             "contract_name": contract.functions.name().call(),
             "total_supply": contract.functions.totalSupply().call(),

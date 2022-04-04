@@ -2,10 +2,11 @@ import os
 from web3 import Web3
 import secrets
 import string
+from config import Settings as ST
 
 
 def get_web3():
-    infura_url = os.getenv("ENDPOINT")
+    infura_url = ST.ENDPOINT
     web3 = Web3(Web3.HTTPProvider(infura_url))
     return web3
 
@@ -17,9 +18,7 @@ def get_unique_hash() -> str:
 
 
 def build_transaction(web3, owner, media_url, unique_hash):
-    contract = web3.eth.contract(
-        address=os.getenv("CONTRACT_ADDRESS"), abi=os.getenv("ABI")
-    )
+    contract = web3.eth.contract(address=ST.CONTRACT_ADDRESS, abi=ST.ABI)
     nonce = web3.eth.get_transaction_count(owner)
     contract_txn = contract.functions.mint(
         owner,

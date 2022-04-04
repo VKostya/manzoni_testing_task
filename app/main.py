@@ -1,4 +1,3 @@
-from tracemalloc import start
 from fastapi import FastAPI
 from api.handlers import router
 

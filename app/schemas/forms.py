@@ -1,4 +1,3 @@
-from db.models import *
 from pydantic import BaseModel
 
 

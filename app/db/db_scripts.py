@@ -1,4 +1,6 @@
-from db.models import *
+from pony.orm import db_session
+
+from db.models import Token
 
 
 @db_session

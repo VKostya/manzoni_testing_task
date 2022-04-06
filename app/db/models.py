@@ -1,5 +1,6 @@
 from pony.orm import PrimaryKey, Required, Optional
-from app.main import db
+
+from ..main import db
 
 
 class Token(db.Entity):
@@ -8,3 +9,6 @@ class Token(db.Entity):
     tx_hash = Optional(str, unique=True)
     media_url = Required(str)
     owner = Required(str)
+
+
+db.generate_mapping(create_tables=True)

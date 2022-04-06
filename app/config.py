@@ -15,3 +15,6 @@ class Config:
 
     PRIVATE_KEY = os.getenv("PRIVATE_KEY")
     ENDPOINT = os.getenv("ENDPOINT")
+
+
+config = Config()
